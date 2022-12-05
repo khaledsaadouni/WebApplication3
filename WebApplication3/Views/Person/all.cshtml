@@ -1,0 +1,86 @@
+﻿@model WebApplication3.Models.person
+
+@{
+    ViewBag.Title = "person detail Page";
+}
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>*@
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+
+
+            <th scope="col">#</th>
+            <th scope="col">  </th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in ViewData["persons"] as List<WebApplication3.Models.person>)
+        {
+            <tr>
+                <th scope="row">@e.id</th>
+             
+                <td> <img src="@e.image" width="50" height="50" /></td>   
+               
+                <td>@e.firstname</td>
+                <td>@e.lastname</td>
+                <td>@e.email</td>
+                <td> @e.birthday</td>
+                <td> @e.country</td>
+                
+            </tr>
+        }
+            
+        </tbody>
+</table>
+
+
+
+
+
+  
+<div  >
+    <h1>Add person</h1>
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+
+
+                <th scope="col">#</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Email</th>
+
+                <th scope="col">Country</th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("all", "Person", FormMethod.Post))
+            {
+                <tr>
+                    <th scope="row"> @Html.TextBoxFor(m => m.id)</th>
+
+
+                    <td>@Html.TextBoxFor(m => m.firstname)</td>
+                    <td>@Html.TextBoxFor(m => m.lastname)</td>
+                    <td>@Html.TextBoxFor(m => m.email)</td>
+
+                    <td> @Html.TextBoxFor(m => m.country)</td>
+                    <td> <input type="submit" value="Add Person" /></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div> 
